@@ -1,0 +1,107 @@
+1. Two Sum
+Easy
+48.7K
+1.6K
+Companies
+Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+You can return the answer in any order.
+
+ 
+
+Example 1:
+
+Input: nums = [2,7,11,15], target = 9
+Output: [0,1]
+Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+Example 2:
+
+Input: nums = [3,2,4], target = 6
+Output: [1,2]
+Example 3:
+
+Input: nums = [3,3], target = 6
+Output: [0,1]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+BRuute force
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        int n=nums.size();
+        vector <int> bums;
+        
+
+        for(int i=0;i<n;i++){
+            int first=nums[i];
+            for(int j=i+1;j<n;j++){
+                int second=nums[j];
+                if((first+second)==target){
+                    bums.push_back(i);
+                    bums.push_back(j);
+                    break;
+                }
+            }
+        }
+        return bums;
+    }
+};
+
+
+
+
+
+
+
+
+
+better method
+
+  using hashing
+
+  class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        map<int,int> mpp;
+        int n=nums.size();
+
+        for(int i=0;i<n;i++){
+            int num=nums[i];
+            int more=target-num;
+
+            if(mpp.find(more) != mpp.end()){
+                return {mpp[more] , i};
+            }
+
+
+            mpp[num]=i;
+        }
+
+        
+
+        return {-1,-1};
+    }
+};
+
+
+
+
+optimal method
+
+  using 2 pointer  approach
+
+  sort and using left and pointer....solve it
